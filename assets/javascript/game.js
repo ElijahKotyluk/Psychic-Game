@@ -1,3 +1,4 @@
+
 // Define alphabet array with letters for the computer choose from.
 const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -44,16 +45,19 @@ updateGuessCount();
 
 // Detects user's keyboard input.
 document.onkeyup = function (event) {
-    guessCount--;
+    //guessCount--;
     let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
     // limiting the characters that can be chosen.
     if (event.keyCode < 65 || event.keyCode > 90) {
         alert("Invalid Entry");
-    } // Work in progress.
+    } else if (event.keyCode >= 65 || event.keyCode < 90) {
+        guessCount--;
+        lettersGuessed.push(userGuess);
+    };
 
 
-    lettersGuessed.push(userGuess);
+    //lettersGuessed.push(userGuess);
     updateGuessCount();
     updateLettersGuessed();
 
