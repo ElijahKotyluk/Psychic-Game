@@ -48,15 +48,21 @@ document.onkeyup = function (event) {
     //guessCount--;
     let userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-    // limiting the characters that can be chosen.
+    // limiting to alphanumeric characters only.
     if (event.keyCode < 65 || event.keyCode > 90) {
         alert("Invalid Entry");
     } else if (event.keyCode >= 65 || event.keyCode < 90) {
-        guessCount--;
-        lettersGuessed.push(userGuess);
+       // guessCount--;
+        if (lettersGuessed.includes(userGuess) === false) {
+            lettersGuessed.push(userGuess);
+            guessCount--;
+        } else {
+            alert('You already chose that letter.');
+        }
+
     };
 
-
+    
     //lettersGuessed.push(userGuess);
     updateGuessCount();
     updateLettersGuessed();
